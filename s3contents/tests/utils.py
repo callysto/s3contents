@@ -26,3 +26,9 @@ def mark_class(marker):
 
 RUN_GCSFS_TESTS = "RUN_GCSFS_TESTS" not in os.environ
 GCS_TEST = mark_class(pytest.mark.skipif(RUN_GCSFS_TESTS, reason="Only run GCS if tell to"))
+
+RUN_S3_TESTS = "RUN_S3_TESTS" not in os.environ
+S3_TEST = mark_class(pytest.mark.skipif(RUN_S3_TESTS, reason="Only run S3 if tell to"))
+
+RUN_SWIFT_TESTS = "RUN_SWIFT_TESTS" not in os.environ
+SWIFT_TEST = mark_class(pytest.mark.skipif(RUN_SWIFT_TESTS, reason="Only run Swift if tell to"))

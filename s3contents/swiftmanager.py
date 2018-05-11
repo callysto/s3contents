@@ -5,35 +5,35 @@ from s3contents.genericmanager import GenericContentsManager
 class SwiftContentsManager(GenericContentsManager):
     auth_url = Unicode(
         "auth_url", help="OpenStack Authentication URL").tag(
-            config=True, env="JPYNB_OS_AUTH_URL")
+            config=True, env="OS_AUTH_URL")
 
     project_name = Unicode(
         "project_name", help="OpenStack Project Name").tag(
-            config=True, env="JPYNB_OS_PROJECT_NAME")
+            config=True, env="OS_PROJECT_NAME")
 
     username = Unicode(
         "username", help="OpenStack Username").tag(
-            config=True, env="JPYNB_OS_USERNAME")
+            config=True, env="OS_USERNAME")
 
     project_domain_name = Unicode(
         "project_domain_name", help="OpenStack Project Domain Name").tag(
-            config=True, env="JPYNB_OS_PROJECT_DOMAIN_NAME")
+            config=True, env="OS_PROJECT_DOMAIN_NAME")
 
     user_domain_name = Unicode(
         "user_domain_name", help="OpenStack User Domain Name").tag(
-            config=True, env="JPYNB_OS_USER_DOMAIN_NAME")
+            config=True, env="OS_USER_DOMAIN_NAME")
 
     password = Unicode(
         "password", help="OpenStack Password").tag(
-            config=True, env="JPYNB_OS_PASSWORD")
+            config=True, env="OS_PASSWORD")
 
     region_name = Unicode(
         "region_name", help="OpenStack Region").tag(
-            config=True, env="JPYNB_OS_REGION_NAME")
+            config=True, env="OS_REGION_NAME")
 
     container = Unicode(
         "container", help="Swift container to store files in").tag(
-            config=True, env="JPYNB_OS_CONTAINER")
+            config=True, env="JPYNB_SWIFT_CONTAINER")
 
 
     prefix = Unicode("", help="Prefix path inside the specified container").tag(config=True)
@@ -52,3 +52,6 @@ class SwiftContentsManager(GenericContentsManager):
             region_name=self.region_name,
             container=self.container,
             prefix=self.prefix)
+
+    def _get_os_path(self, api_path):
+        return self._fs.path(api_path)

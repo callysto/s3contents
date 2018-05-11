@@ -2,7 +2,9 @@ from s3contents.ipycompat import TestContentsManager
 
 from s3contents import S3ContentsManager
 
+from s3contents.tests.utils import S3_TEST
 
+@S3_TEST
 class S3ContentsManagerTestCase(TestContentsManager):
 
     def setUp(self):

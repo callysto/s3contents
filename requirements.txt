@@ -5,4 +5,5 @@ s3fs==0.1.2
 gcsfs
 mock
 nose
+python-keystoneclient
 python-swiftclient==3.5.0
