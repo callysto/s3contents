@@ -72,6 +72,8 @@ class SwiftFS(GenericFS):
         # If it doesn't exist, this will create it.
         # If it already exists, no change will happen.
         self.log.debug("S3contents.SwiftFS: init")
+        self.client.post(container=self.container)
+
         self.init()
 
     def init(self):
